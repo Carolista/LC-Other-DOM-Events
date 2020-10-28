@@ -7,20 +7,53 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title><!-- TITLE HERE FOR BROWSER TAB --></title>
+	<title>Other DOM Events</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <!-- Google fonts linked here if you want -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&family=Walter+Turncoat&display=swap" rel="stylesheet">
     <script src = "scripts.js"></script>
 </head>
 
 <body>
 	
 	<header id="header">
-		<h1 id="page-title"></h1>
-		<h2 id="tagline"></h2>
+		<h1 id="page-title">Other DOM Events</h1>
+		<h2 id="tagline">beyond the simple click event</h3>
 	</header>
 
 	<main> 
+        
+        <section>
+			<h3>Click and Double-click</h3>
+            <div class="container row centered"> <!-- inline button group -->
+                <button id="click">Click Me</button>
+                <button id="double-click">Double-click Me</button>
+            </div>
+        </section>
+
+        <section>
+			<h3>Mouseover and Mouseout</h3>
+			<div class="container row centered">
+				<button id="over-and-out">Pass Over Me</button>
+				<button id="and-me">And Me</button>
+            </div>
+			<p>This button requires two separate handlers. One is listening for the mouse to cross the boundary onto the button, and the other one listens only for the mouse to cross back over the boundary to the rest of the page. Note that if your goal is to affect <em>only</em> the item you are moving over, it's more common to use the pseudo-element <strong>:hover</strong> in your style sheet. The second button demonstrates a situation where handling it in the DOM is the only way to go.</p>
+		</section>
+		
+		<section>
+			<h3>Mousedown and Mouseup</h3>
+            <div class="container row centered">
+                <button id="down-and-up">HOLD ME DOWN</button>
+			</div>
+			<p>This button also requires two separate handlers. It is different from a click event because one handler listens only for the <em>press</em> part of a click, and the other one listens for the <em>release</em> part of the click. Try it out! Start to click on the button, but don't release your mouse right away. Compare this to the behavior of the regular click button above, which silently acknowledges the pressing of the mouse, but waits for the release before changing the color.</p>
+		</section>
+		
+		<section>
+			<h3>Mousemove with the Canvas Element</h3>
+			<canvas id="canvas" width="560" height="360"></canvas>
+			<div class="container row centered">
+                <button id="clear">CLEAR CANVAS</button>
+			</div>
+		</section>
 
     </main>
     

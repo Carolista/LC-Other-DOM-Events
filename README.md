@@ -1,6 +1,6 @@
 # LC-Other-DOM-Events
 
-This example demonstrates mouseover & mouseout events, alerts, confirmations, and stopPropagation(). 
+This example demonstrates a variety of mouse events beyond the single click (including a bonus demo of mousemove).
 
 Demo: https://carolista.github.io/LC-Other-DOM-Events/
 
