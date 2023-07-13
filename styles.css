@@ -40,7 +40,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0px 0px 30px;
+	max-width: 1000px;
+    margin: 0px auto 30px;
 }
 
 div {
