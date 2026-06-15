@@ -15,66 +15,29 @@ const pressDownButton = document.getElementById('down-and-up');
 
 /** PRE-SET STYLES **/
 
-/* 
-    The DOM can't read your style sheet, so IF your handlers depend on 
-    reading the current color of an element from the page, you have to 
-    set it here first. If your handler needs only to change the color, 
-    but not read it, this is not necessary. For the click and double-click 
-    handlers, we need it to be able to tell what color it is in order to 
-    evaluate the conditionals and toggle between one color and another. 
-*/
+// DEMO: Set the background-color property of the click and doubleclick buttons
+// so that they will exist inline on the elements and can be read from the HTML file
 
-clickButton.style.backgroundColor = BASE_COLOR;
-doubleClickButton.style.backgroundColor = BASE_COLOR;
-
-function toggleColor(element) {
-	let currentColor = element.style.backgroundColor; // read from inline styling
-	return currentColor === BASE_COLOR ? ALT_COLOR : BASE_COLOR;
-}
+// DEMO: Write a function that accepts an element, reads its background color,
+// and toggles between the base color and alternate color.
 
 /** EVENT HANDLERS **/
 
-// When the "click me" button is clicked
-clickButton.addEventListener('click', function () {
-	clickButton.style.backgroundColor = toggleColor(clickButton);
-});
+// DEMO: Create an event listener that toggles the background-color property
+// when the "click me" button is clicked
 
-// When the "double-click me" button is double-clicked
-doubleClickButton.addEventListener('dblclick', function () {
-	doubleClickButton.style.backgroundColor = toggleColor(doubleClickButton);
-});
+// DEMO: Create an event listener that toggles the background-color property
+// when the "double-click me" button is double-clicked
 
-// When the mouse first passes *onto* the "pass over me" button
-passOverButton.addEventListener('mouseover', function () {
-	passOverButton.style.backgroundColor = ALT_COLOR;
-});
+// DEMO: Create a set of event listeners that change the background-color property
+// when the mouse passes *onto* and then *off of* the "pass over me" button
 
-// When the mouse passes *off of* the "pass over me" button
-passOverButton.addEventListener('mouseout', function () {
-	passOverButton.style.backgroundColor = BASE_COLOR;
-});
+// DEMO: Create a set of event listeners that change the background-color property
+// of both the "pass over me" and the "and me" buttons when the mouse
+// passes *onto* and then *off of* the "and me" button
 
-// When the mouse first passes *onto* the "and me" button
-andMeButton.addEventListener('mouseover', function () {
-	passOverButton.style.backgroundColor = ALT_COLOR;
-	andMeButton.style.backgroundColor = ALT_COLOR;
-});
-
-// When the mouse passes *off of* the "and me" button
-andMeButton.addEventListener('mouseout', function () {
-	andMeButton.style.backgroundColor = BASE_COLOR;
-	passOverButton.style.backgroundColor = BASE_COLOR;
-});
-
-// When the mouse presses down on the "hold me down" button
-pressDownButton.addEventListener('mousedown', function () {
-	pressDownButton.style.backgroundColor = ALT_COLOR;
-});
-
-// When the mouse presses down on the "hold me down" button
-pressDownButton.addEventListener('mouseup', function () {
-	pressDownButton.style.backgroundColor = BASE_COLOR;
-});
+// DEMO: Create a set of event listeners that change the background-color property
+// when the mouse presses down on the "hold me down" button and then releases
 
 /** BONUS: MOUSEMOVE WITH A CANVAS ELEMENT **/
 
@@ -84,40 +47,9 @@ let y = 0;
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
-const clearCanvas = document.getElementById('clear');
+const clearButton = document.getElementById('clear');
 
-// When the user presses down with the mouse
-canvas.addEventListener('mousedown', e => {
-	x = e.offsetX;
-	y = e.offsetY;
-	isDrawing = true;
-});
-
-// When the user moves the mouse after pressing down
-canvas.addEventListener('mousemove', e => {
-	if (isDrawing === true) {
-		drawLine(context, x, y, e.offsetX, e.offsetY);
-		x = e.offsetX;
-		y = e.offsetY;
-	}
-});
-
-// When the user releases the mouse
-window.addEventListener('mouseup', e => {
-	if (isDrawing === true) {
-		drawLine(context, x, y, e.offsetX, e.offsetY);
-		x = 0;
-		y = 0;
-		isDrawing = false;
-	}
-});
-
-// When the user presses the "clear canvas" button
-clearCanvas.addEventListener('click', e => {
-	context.clearRect(0, 0, canvas.width, canvas.height);
-});
-
-// Needed for mousemove handler above
+// Needed for mousemove and mouseup handlers
 function drawLine(context, x1, y1, x2, y2) {
 	context.beginPath();
 	context.strokeStyle = 'black';
@@ -127,3 +59,34 @@ function drawLine(context, x1, y1, x2, y2) {
 	context.stroke();
 	context.closePath();
 }
+
+// When the user presses down with the mouse
+canvas.addEventListener('mousedown', event => {
+	x = event.offsetX;
+	y = event.offsetY;
+	isDrawing = true;
+});
+
+// When the user moves the mouse after pressing down
+canvas.addEventListener('mousemove', event => {
+	if (isDrawing === true) {
+		drawLine(context, x, y, event.offsetX, event.offsetY);
+		x = event.offsetX;
+		y = event.offsetY;
+	}
+});
+
+// When the user releases the mouse
+window.addEventListener('mouseup', event => {
+	if (isDrawing === true) {
+		drawLine(context, x, y, event.offsetX, event.offsetY);
+		x = 0;
+		y = 0;
+		isDrawing = false;
+	}
+});
+
+// When the user presses the "clear canvas" button
+clearButton.addEventListener('click', () => {
+	context.clearRect(0, 0, canvas.width, canvas.height);
+});
