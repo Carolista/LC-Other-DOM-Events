@@ -1,134 +1,122 @@
-/**** CASCADING STYLE SHEET ****/
-
 /*
     This sheet does not need to be edited unless you want to.
 */
 
-/**** Defaults for standard elements ****/
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
 
 body {
 	background-color: white;
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 12pt;
 	font-weight: 400;
-	color: #222; 
-	width: 100vw;
-	height: 100vh;
-	margin: 0px;
-	padding: 0px;
-    overflow-x: hidden; 
-    box-sizing: border-box;
+	color: #222;
+	min-height: 100vh;
 }
 
 header {
 	background-color: #222;
-    height: 140px;
-    padding: 20px 120px;
-    box-sizing: border-box;
+	height: 140px;
+	padding: 20px clamp(1rem, 5vw, 120px);
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	width: 100%;
-    padding: 30px 120px;
-    box-sizing: border-box;
+	padding: 30px clamp(1rem, 5vw, 120px);
 }
 
 section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-	max-width: 1000px;
-    margin: 0px auto 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 560px;
+	margin: 0px auto 30px;
 }
 
 div {
-    position: relative;
+	position: relative;
 	margin: 0px;
 	padding: 0px;
 }
 
-h1 { 
-    font-family: 'Walter Turncoat', cursive;
+h1 {
+	font-family: 'Walter Turncoat', cursive;
 	font-size: 2.5rem;
 }
 
-h2 { 
+h2 {
 	font-size: 1rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+	font-weight: 300;
+	letter-spacing: 2px;
+	text-transform: uppercase;
 }
 
 h3 {
-    font-family: 'Walter Turncoat', cursive;
-    font-size: 2rem;
-    text-align: center;
-    margin: 0px; 
+	font-family: 'Walter Turncoat', cursive;
+	font-size: 2rem;
+	text-align: center;
+	margin: 0px;
 }
 
 p {
-    margin: .5rem 0px; 
+	margin: 0.5rem 0;
 }
 
 button {
-    height: 2.3rem;
-    min-width: 100px;
-    padding: 3px 10px;
-    color: white;
-    font-family: 'Walter Turncoat', cursive;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    background-color: #222;
-    border: none;
-    border-radius: 5px;
-    margin: 10px;
+	height: 2.3rem;
+	min-width: 100px;
+	padding: 3px 10px;
+	color: white;
+	font-family: 'Walter Turncoat', cursive;
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	background-color: #222;
+	border: none;
+	border-radius: 5px;
+	margin: 10px;
 }
 
 button:hover {
-    cursor: pointer;
-    /* DOM will handle other effects */
+	cursor: pointer;
+	/* DOM will handle other effects */
 }
 
-button:focus {
-    outline: 0;
+button:focus-visible {
+	outline: 3px solid #222;
+	outline-offset: 2px;
 }
 
 canvas {
-    border: 4px solid #222;
-    width: 560px;
-    height: 360px;
-    align-self: center;
+	border: 4px solid #222;
+	width: 560px;
+	max-width: 100%;
+	height: auto;
+	align-self: center;
 }
-
-/**** IDs for specific elements ****/
 
 #page-title {
 	color: white;
 	text-align: center;
-	margin: 0px 0px 10px;  
+	margin: 0 0 10px;
 }
 
 #tagline {
-    color: white;
+	color: white;
 	text-align: center;
-	margin: 0px;  
+	margin: 0;
 }
-
-
-/**** Classes for custom styles ****/
 
 .container {
-    display: flex;
-}
-
-.row {
-    flex-direction: row;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .centered {
-    justify-content: center; /* applies to flexbox only */
+	justify-content: center;
 }
-
